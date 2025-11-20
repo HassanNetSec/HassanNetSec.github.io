@@ -13,18 +13,6 @@
         }
 
         :root {
-            --bg-primary: #0a0e27;
-            --bg-secondary: #1a1f3a;
-            --text-primary: #e0e0e0;
-            --text-secondary: #a0a0a0;
-            --accent-primary: #00f0ff;
-            --accent-secondary: #7d5fff;
-            --accent-tertiary: #ff00ff;
-            --card-bg: rgba(26, 31, 58, 0.8);
-            --border-color: rgba(0, 240, 255, 0.3);
-        }
-
-        [data-theme="light"] {
             --bg-primary: #f5f7fa;
             --bg-secondary: #ffffff;
             --text-primary: #2c3e50;
@@ -64,7 +52,7 @@
             background: radial-gradient(circle, var(--accent-primary) 1px, transparent 1px);
             background-size: 50px 50px;
             animation: gridMove 20s linear infinite;
-            opacity: 0.1;
+            opacity: 0.05;
         }
 
         @keyframes gridMove {
@@ -138,7 +126,7 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 0 5%;
+            padding: 100px 5% 0 5%;
             position: relative;
         }
 
@@ -148,23 +136,29 @@
         }
 
         .profile-img {
-            width: 200px;
-            height: 200px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
             background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 2rem;
-            font-size: 4rem;
+            font-size: 3.5rem;
             color: white;
-            box-shadow: 0 0 50px rgba(0, 240, 255, 0.5);
-            animation: pulse 2s infinite;
+            box-shadow: 0 10px 40px rgba(0, 102, 204, 0.3);
+            animation: pulse 3s infinite;
         }
 
         @keyframes pulse {
-            0%, 100% { box-shadow: 0 0 50px rgba(0, 240, 255, 0.5); }
-            50% { box-shadow: 0 0 80px rgba(125, 95, 255, 0.8); }
+            0%, 100% { 
+                box-shadow: 0 10px 40px rgba(0, 102, 204, 0.3);
+                transform: scale(1);
+            }
+            50% { 
+                box-shadow: 0 15px 50px rgba(107, 76, 230, 0.4);
+                transform: scale(1.02);
+            }
         }
 
         .hero h1 {
@@ -540,9 +534,6 @@
             <li><a href="#contact">Contact</a></li>
         </ul>
         <div style="display: flex; gap: 1rem; align-items: center;">
-            <button class="theme-toggle" id="themeToggle">
-                <i class="fas fa-moon"></i>
-            </button>
             <button class="mobile-menu-btn" id="mobileMenuBtn">
                 <i class="fas fa-bars"></i>
             </button>
@@ -726,30 +717,6 @@
     </footer>
 
     <script>
-        // Theme Toggle
-        const themeToggle = document.getElementById('themeToggle');
-        const body = document.body;
-        const themeIcon = themeToggle.querySelector('i');
-
-        themeToggle.addEventListener('click', () => {
-            if (body.getAttribute('data-theme') === 'light') {
-                body.removeAttribute('data-theme');
-                themeIcon.className = 'fas fa-moon';
-                localStorage.setItem('theme', 'dark');
-            } else {
-                body.setAttribute('data-theme', 'light');
-                themeIcon.className = 'fas fa-sun';
-                localStorage.setItem('theme', 'light');
-            }
-        });
-
-        // Load saved theme
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'light') {
-            body.setAttribute('data-theme', 'light');
-            themeIcon.className = 'fas fa-sun';
-        }
-
         // Mobile Menu
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const navLinks = document.getElementById('navLinks');
@@ -807,7 +774,7 @@
             
             // Update this URL to match your actual resume file name and location
             // Option 1: If resume is in the same repository root
-            const resumeUrl = 'Hassan_Khan_Resume.pdf';
+            const resumeUrl = 'Hassan_Khan_Resume';
             
             // Option 2: If you want to link to a specific GitHub raw file URL
             // const resumeUrl = 'https://github.com/HassanNetSec/HassanNetSec.github.io/raw/main/Hassan_Khan_Resume.pdf';
